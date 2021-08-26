@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>CSSTORE</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<style>
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+* {
+  box-sizing: border-box;
+}
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+/* Style the header */
+header {
+  background-color: rgb(221, 205, 58);
+  padding: 10px;
+  text-align: center;
+  font-size: 35px;
+  color: rgba(255, 255, 255, 0.959);
+}
+/* Create two columns/boxes that floats next to each other */
+nav {
+  float: left;
+  width: 20%;
+  height: 300px; /* only for demonstration, should be removed */
+  background: rgb(19, 161, 204);
+  padding: 20px;
+}
+/* Style the list inside the menu */
+nav ul {
+  list-style-type: none;
+  padding: 0;
+}
+article {
+  float: left;
+  padding: 20px;
+  width: 80%;
+  background-color: white;
+  height: 300px; /* only for demonstration, should be removed */
+}
+/* Clear floats after the columns */
+section::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+/* Style the footer */
+footer {
+  background-color: #777;
+  padding: 10px;
+  text-align: center;
+  color: white;
+}
+@media (max-width: 600px) {
+  nav, article {
+    width: 100%;
+    height: auto;
+  }
+}
+</style>
+</head>
+<body>
+<header>
+  <h2>CSstore</h2>
+</header>
+<section>
+  <nav>
+    <ul>
+      <li><a href="/">Home</a></li>
+      <li><a href="/addProduct">Add Product</a></li>
+      <li><a href="/contact">Contact</a></li>
+      <li>              
+              <form action="/search" method="post" style="font-size: 15px;" >
+              <input type="text" name="txtSearch" style="font-size: 15px;">
+              <input type="submit" value="Search" style="font-size: 15px; color:rgb(2, 2, 2);background:#09D4FF; width:60px;">
+              </form>
+            </li> 
+    </ul>
+  </nav>
+  
+  <article>
+<h1>list Product of CS Store</h1>
+  <table>
+  <tr>
+    <th>Name</th>
+    <th>Made In</th>
+    <th>Picture</th>
+    <th>Price</th>
+    <th>Option</th>
+  </tr>
+  {{#each model}}
+            <tr>
+                <td>{{Name}}</td>
+                <td>{{Madein}}</td>
+                <td><img src="{{Picture}}" width="150" height="100"/> </td>
+                <td>{{Price}}</td>
+
+                <td>
+                    
+                    <button><a href="/delete?id={{_id}}">Delete</a></button>                     
+                </td> 
+                
+            </tr>           
+            {{/each}}
+</table>
+  </article>
+</section>
+
+
+
+
+</body>
+</html>
